@@ -1,4 +1,5 @@
 #pragma once
 #include <iostream>
 
-void keys(int arr[11][59]);
+void keys();
+void dotFill();
