@@ -7,36 +7,39 @@
 #include <map>
 using namespace std;
 
-
-int timer = 0;
-
 int main() {
 	setlocale(LC_ALL, "Russian");
+	const int rows = 12, colums = 47;
+	char field[rows][colums] = { ' ' };
 	   
 	char sym = '1';	
-    	
-	 do {		
-		cout << "Приветствую Вас в эмуляторе фортепиано!\n\n";
-		cout << "Играйте клавишами Z X C V B N M" << "\n";
-		cout << "Kлавиша Q - для выхода." << "\n\n";
+	cout << "Приветствую Вас в эмуляторе фортепиано!\n\n";
+	cout << "Играйте клавишами Z X C V B N M" << "\n";
+	cout << "Kлавиша Q - для выхода." << "\n\n";
 
-		keys();		
+	char* arr[rows];
+	for (int i = 0; i < rows; i++)
+		arr[i] = field[i];
+	
+	fill(arr, rows, colums);
+	fill2(arr, rows, colums);	
+	abc(arr, rows, colums);
+	show(arr, rows, colums);	
 
+	 while(sym !='Q'&& sym != 'q') {
 			sym = _getch();
-			switch(sym) {			
-			case 'Z': case 'z': Beep(32.703, 10);  break;
-			case 'X': case 'x': Beep(36.708, 10);  break;
-			case 'C': case 'c': Beep(41.203, 10);  break;
-			case 'V': case 'v': Beep(43.654, 10);  break;
-			case 'B': case 'b': Beep(48.999, 10);  break;
-			case 'N': case 'n': Beep(55, 10);  break;
-			case 'M': case 'm': Beep(61.735, 10);  break;
+			switch(sym) {							
+			case 'Z': case 'z': Beep(523, 500);  break;
+			case 'X': case 'x': Beep(587, 500);  break;
+			case 'C': case 'c': Beep(659, 500);  break;
+			case 'V': case 'v': Beep(698, 500);  break;
+			case 'B': case 'b': Beep(783, 500);  break;
+			case 'N': case 'n': Beep(880, 500);  break;
+			case 'M': case 'm': Beep(987, 500);  break;
 			}					
-			Sleep(100);
-			system("cls");
-
-	 } while (sym != 'Q' && sym != 'q');  
-   
+			//Sleep(10);
+			//system("cls");
+	 }  
 
 	return 0;
 }
